@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="src/fetch.js"></script>
+    <script src="src/index.js"></script>
+    <title>Library App</title>
+</head>
+<body>
+    <h1 class="main-title">Welcome to the Open Library App</h1><br>
+    <h2 class="second-title">Please explore the free books available!</h2><br>
+    <form>
+        <label for="cars">Search by:</label>
+        <select id="search-method" name="search-method">
+          <option value="author">Author</option>
+          <option value="title">Title</option>
+          <label for="search-q">Search:</label>
+          <input type="text" id="search-q" name="search-bar">
+          <input type="submit" id="submit" name= "Submit">
+        </select>
+    </form>
+
+    <button id="pop-author">Search Popular Titles</button><br>
+    <button id="pop-titles">Search Popular Authors</button><br>
+    <!-- Add more buttons based on the data that comes from the user that logs in -->
+
+</body>
+</html>
+
