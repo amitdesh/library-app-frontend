@@ -1,14 +1,18 @@
 class FetchAdapter {
-    constructor(searchBy, searchWords){
+
+    static fetchBook(id){
+        return fetch(`https://openlibrary.org/api/books?bibkeys=ISBN:${id}`)
+        .then(resp => resp.json())
+
+    }
+  
+    static fetch(searchBy, searchWords){
         this.searchBy = searchBy
         this.searchWords = searchWords.split(' ').join('+')
-        this.baseURL = `http://openlibrary.org/search.json?${this.searchBy}=${this.searchWords}&limit=5`
+        this.completeURL = `http://openlibrary.org/search.json?${this.searchBy}=${this.searchWords}&limit=5`
+        return fetch(this.completeURL)
+        .then(resp => resp.json())
     }
 
-    fetch(){
-        return fetch(this.baseURL)
-        .then(resp => resp.json())
-        .then(console.log)
-    }
 
 }
