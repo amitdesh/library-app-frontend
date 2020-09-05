@@ -19,9 +19,9 @@ document.addEventListener("DOMContentLoaded", e=>{
             let searchBy = form['search-method'].value
             FetchAdapter.fetch(searchBy, searchWords)
                 .then(bookCollection => {
-                    const books = bookCollection.map(bookObj => new Book(bookObj))
-
-                    Book.renderBooks(books, bookDiv, searchBy, searchWords)
+                    let books = bookCollection.map(bookObj => new Book(bookObj))
+                    let filteredBooks = Book.searchFilter(books, searchWords, searchBy)
+                    Book.renderBooks(filteredBooks, bookDiv)
                 })
         }
     })

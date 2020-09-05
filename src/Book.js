@@ -9,15 +9,21 @@ class Book{
 
     }
 
-    static renderBooks(books, bookList, searchWords, searchBy){
-        // console.log({searchBy, searchWords})
-        for(const book of books){
-            if (book[searchBy] === searchWords){
-                debugger
-                console.log(book)
+    static renderBooks(filteredBookArray, bookList){
+        for(const book of filteredBookArray){
             book.render(bookList)
+        }
+    }
+
+    static searchFilter(bookArray, searchWords, searchBy){
+        let filteredBookArray = []
+        console.log(typeof searchBy)
+        for (let i =0; i< bookArray.length; i++){
+            if (bookArray[i][searchBy].includes(searchWords)){
+                filteredBookArray.push(bookArray[i])
             }
         }
+        return filteredBookArray
     }
     
     renderShowBook(id){
@@ -27,7 +33,7 @@ class Book{
         bookList.innerHTML = `
         <h3>${this.title}</h3>
         <h4>Author: ${this.author}</h4>
-        <img src="${this.image}" />`
+        <img src="${this.image}"/>`
     }
 
     
