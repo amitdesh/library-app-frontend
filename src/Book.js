@@ -1,17 +1,19 @@
 class Book{
-    constructor({title, genre, author_name, popularity, publisher}){
+    constructor({title, genre, author,image,popularity, publisher}){
         this.title = title
         this.genre = genre
-        this.author = author_name
+        this.image = image
+        this.author = author
         this.popularity = popularity
         this.publisher = publisher
 
     }
 
     static renderBooks(books, bookList, searchWords, searchBy){
+        // console.log({searchBy, searchWords})
         for(const book of books){
-            // debugger
-            if (book.searchBy === searchWords){
+            if (book[searchBy] === searchWords){
+                debugger
                 console.log(book)
             book.render(bookList)
             }
@@ -25,9 +27,7 @@ class Book{
         bookList.innerHTML = `
         <h3>${this.title}</h3>
         <h4>Author: ${this.author}</h4>
-      <img alt=""
-      src="${this.image}" />
-      `
+        <img src="${this.image}" />`
     }
 
     
@@ -39,10 +39,9 @@ class Book{
         bookLi.innerHTML = `<button id="specific-book" dataset-id: ${this.isbn}>
         <h3>${this.title}</h3>
         <h4>Author: ${this.author}</h4>
-      <img alt=""
-      src="${this.image}" />
-      </button>
-      `
-      bookList.append(bookLi)
+        <img src="${this.image}" />
+        </button>
+        `
+        bookList.append(bookLi)
     }
 }
