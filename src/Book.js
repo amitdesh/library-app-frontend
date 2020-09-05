@@ -16,19 +16,23 @@ class Book{
         }
     }
 
+
     static searchFilter(bookArray, searchWords, searchBy){
         let filteredBookArray = []
         console.log(typeof searchBy)
         for (let i =0; i< bookArray.length; i++){
             if (bookArray[i][searchBy].includes(searchWords)){
+                console.log("hello")
                 filteredBookArray.push(bookArray[i])
             }
         }
         return filteredBookArray
     }
     
-    renderShowBook(id){
-        bookList = document.querySelector("#book-info")
+     renderShowBook(){
+         console.log("beef")
+        let bookList = document.querySelector("#book-info")
+        const bookLi = document.createElement("li")
         bookLi.classList.add("book")
 
         bookList.innerHTML = `
@@ -43,7 +47,7 @@ class Book{
         const bookLi = document.createElement("li")
         bookLi.classList.add("book")
 
-        bookLi.innerHTML = `<button class="specific-book" dataset-id: ${id}>
+        bookLi.innerHTML = `<button class="specific-book" id = ${this.id}>
         <h3>${this.title}</h3>
         <h4>Author: ${this.author}</h4>
         <img src="${this.image}" />
