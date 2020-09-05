@@ -8,9 +8,9 @@ class FetchAdapter {
   
     static fetch(searchBy, searchWords){
         this.searchBy = searchBy
-        this.searchWords = searchWords.split(' ').join('+')
-        this.completeURL = `http://openlibrary.org/search.json?${this.searchBy}=${this.searchWords}&limit=5`
-        return fetch(this.completeURL)
+        this.searchWords = searchWords
+        this.baseURL = `http://localhost:3000/books`
+        return fetch(this.baseURL)
         .then(resp => resp.json())
     }
 

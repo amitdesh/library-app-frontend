@@ -1,19 +1,20 @@
 class Book{
-    constructor({title, genre, author_name, publishYear, publisher, language, isbn }){
+    constructor({title, genre, author_name, popularity, publisher}){
         this.title = title
         this.genre = genre
         this.author = author_name
-        this.publishYear = publishYear
+        this.popularity = popularity
         this.publisher = publisher
-        this.language = language
-        this.isbn = isbn
-        this.image = `http://covers.openlibrary.org/b/isbn/${isbn[0]}-S.jpg`
 
     }
 
-    static renderBooks(books, bookList){
+    static renderBooks(books, bookList, searchWords, searchBy){
         for(const book of books){
+            // debugger
+            if (book.searchBy === searchWords){
+                console.log(book)
             book.render(bookList)
+            }
         }
     }
     
