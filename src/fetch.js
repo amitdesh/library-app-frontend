@@ -1,7 +1,7 @@
 class FetchAdapter {
 
     static fetchBook(id){
-        return fetch(`https://openlibrary.org/api/books?bibkeys=ISBN:${id}`)
+        return fetch(`http://localhost:3000/books/${id}`)
         .then(resp => resp.json())
 
     }

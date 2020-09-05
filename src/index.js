@@ -3,9 +3,13 @@ console.log("Hello")
 document.addEventListener("DOMContentLoaded", e=>{
 
     // document.addEventListener('click', e=>{
-    //     if (e.target.id === "specific-book"){
-    //     id = e.target.dataset.id
-    //     FetchAdapter.fetchBook(id)
+    //     if (e.target.matches(".specific-book")){
+    //         id = e.target.dataset.id
+    //         FetchAdapter.fetchBook(id)
+    //         .then(bookObj => {
+    //             console.log(bookObj)
+
+    //         })
     //     }
 
     // })

@@ -1,11 +1,12 @@
 class Book{
-    constructor({title, genre, author,image,popularity, publisher}){
+    constructor({title, genre, author,image,popularity, publisher, id}){
         this.title = title
         this.genre = genre
         this.image = image
         this.author = author
         this.popularity = popularity
         this.publisher = publisher
+        this.id = id
 
     }
 
@@ -42,7 +43,7 @@ class Book{
         const bookLi = document.createElement("li")
         bookLi.classList.add("book")
 
-        bookLi.innerHTML = `<button id="specific-book" dataset-id: ${this.isbn}>
+        bookLi.innerHTML = `<button class="specific-book" dataset-id: ${id}>
         <h3>${this.title}</h3>
         <h4>Author: ${this.author}</h4>
         <img src="${this.image}" />
