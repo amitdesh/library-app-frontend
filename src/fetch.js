@@ -5,10 +5,8 @@ class FetchAdapter {
         .then(resp => resp.json())
 
     }
-  
-    static fetch(searchBy, searchWords){
-        this.searchBy = searchBy
-        this.searchWords = searchWords
+
+    static fetch(){
         this.baseURL = `http://localhost:3000/books/`
         return fetch(this.baseURL)
         .then(resp => resp.json())

@@ -1,5 +1,5 @@
 class Book{
-    constructor({title, genre, author,image,popularity, publisher, id}){
+    constructor({title, genre, author, image, popularity, publisher, id}){
         this.title = title
         this.genre = genre
         this.image = image
@@ -19,18 +19,15 @@ class Book{
 
     static searchFilter(bookArray, searchWords, searchBy){
         let filteredBookArray = []
-        console.log(typeof searchBy)
         for (let i =0; i< bookArray.length; i++){
             if (bookArray[i][searchBy].includes(searchWords)){
-                console.log("hello")
                 filteredBookArray.push(bookArray[i])
             }
         }
         return filteredBookArray
     }
     
-     renderShowBook(){
-         console.log("beef")
+    renderShowBook(){
         let bookList = document.querySelector("#book-info")
         const bookLi = document.createElement("li")
         bookLi.classList.add("book")
@@ -38,19 +35,27 @@ class Book{
         bookList.innerHTML = `
         <h3>${this.title}</h3>
         <h4>Author: ${this.author}</h4>
-        <img src="${this.image}"/>`
+        <img src="${this.image}"/><br>
+        <button class="liked" id="${this.id}">Add This Book To Your Library</button>`
     }
 
-    
+    myLibrary(){
+        let myLib = document.querySelector("#my-library")
+        console.log(myLib)
+        const bookEntry = document.createElement('p')
+        bookEntry.innerHTML = `
+        <h5>${this.title} by ${this.author}</h5>`
+        myLib.append(bookEntry)
+    }
 
     render(bookList){
         const bookLi = document.createElement("li")
         bookLi.classList.add("book")
 
-        bookLi.innerHTML = `<button class="specific-book" id = ${this.id}>
+        bookLi.innerHTML = `<button class="specific-book" id=${this.id}>
         <h3>${this.title}</h3>
         <h4>Author: ${this.author}</h4>
-        <img src="${this.image}" />
+        <img src="${this.image}"/>
         </button>
         `
         bookList.append(bookLi)
