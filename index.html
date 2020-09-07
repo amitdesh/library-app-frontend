@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="src/user.js"></script>
     <script src="src/Book.js"></script>
     <script src="src/fetch.js"></script>
     <script src="src/index.js"></script>
@@ -10,20 +11,26 @@
 </head>
 <body>
     <h1 class="main-title">Welcome to the Open Library App</h1><br>
-    <h2 class="second-title">Please explore the free books available!</h2><br>
+    <h2><label for="login">Login Here:</label><br></h2>
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username-input"></br>
+    <button type="submit" id="login" name= "login">Login</button>
+    <button type="submit" id="signup" name= "signup">Signup</button>
+
+    <h2 class="second-title">Search the Library</h2><br>
     <form id="search-form">
         <label for="book">Search by:</label>
         <select id="search-method" name="search-method">
-          <option name= "author" value="author">Author</option>
-          <option name="title" value="title">Title</option>
-          <label for="search-q">Search:</label>
-          <input type="text" id="search-q" name="search-bar">
-          <input type="submit" id="submit" name= "Submit">
+            <option name= "author" value="author">Author</option>
+            <option name="title" value="title">Title</option>
+            <label for="search-q">Search:</label>
+            <input type="text" id="search-q" name="search-bar">
+            <input type="submit" id="submit" name= "Submit">
         </select>
     </form>
 
-    <button id="pop-author">Search Popular Titles</button><br>
-    <button id="pop-titles">Search Popular Authors</button><br>
+    <!-- <button id="pop-author">Search Popular Titles</button><br>
+    <button id="pop-titles">Search Popular Authors</button><br> -->
     <div id="book-info"></div>
     <div id="book-list"></div>
     <h3>My Library</h3>

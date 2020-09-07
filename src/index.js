@@ -20,11 +20,17 @@ document.addEventListener("DOMContentLoaded", e=>{
                 book.myLibrary()
             })
         }
+        else if (e.target.matches("#signup")){
+            console.log("clicked")
+            let username  = document.querySelector('#username').value
+            console.log(username)
+            User.createNewUser(username)
+        }
     })
 
     document.addEventListener("submit", e=>{
         e.preventDefault()
-        if (e.target.id === 'search-form'){
+        if (e.target.matches('#search-form')){
             let form = e.target
             let bookDiv = document.querySelector("#book-list")
             let searchWords = form['search-q'].value
