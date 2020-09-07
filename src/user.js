@@ -1,19 +1,7 @@
 class User {
-    constructor(username, password){
+    constructor(username){
         this.username = username;
-        this.password = password
     }
-
-    static getUsers(){
-        fetch(`http://localhost:3000/users/`)
-        .then(resp => resp.json())
-
-
-
-
-
-    }
-
 
     static createNewUser(username){
     
@@ -28,15 +16,80 @@ class User {
             })
         }   
         
-        fetch(`http://localhost:3000/users/`,options)
+        return fetch(`http://localhost:3000/users/`,options)
         .then(resp => resp.json())
-        .then(console.log)
     }
 
 
+    static setCookie(cname) {
+        return document.cookie = cname
+    }
+    
+    static getCookie(cname) {
+        var name = cname + "=";
+        var ca = document.cookie.split(';');
+        for(var i = 0; i < ca.length; i++) {
+            var c = ca[i];
+            while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+            }
+            if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+            }
+        }
+        return "";
+        }
+    
+    static checkCookie() {
+        var user = getCookie("username");
+        if (user != "") {
+            alert("Welcome again " + user);
+        } else {
+            user = prompt("Please enter your name:", "");
+            if (user != "" && user != null) {
+            setCookie("username", user, 365);
+            }
+        }
+        }
+
+    static deleteCookie(){
+        return document.cookie = ''
+    }
 
 
+    static deleteUser(id){
 
+        const options = {
+            method: "DELETE",
+            headers: {
+                'content-type': 'application/json',
+                'accept': "application.json"
+            }
+        }
+
+        fetch(`http://localhost:3000/users/`+id,options)
+        .then(resp => resp.json())
+
+    }
+
+    static loginUser(){
+        return fetch(`http://localhost:3000/users/`)
+        .then(resp => resp.json())
+    }
+
+    static userMatching = (allUsers, username) =>{
+        let matchedUser = []
+            for (const user of allUsers){
+                if (user.username === username){
+                    matchedUser.push(user)
+                }
+            }
+            if(matchedUser.length === 0) {
+                alert("Please try again. There is no existing user with this username")
+            }
+            return matchedUser[0]
+
+    }
 
 
 

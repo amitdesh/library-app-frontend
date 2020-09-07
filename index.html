@@ -11,12 +11,14 @@
 </head>
 <body>
     <h1 class="main-title">Welcome to the Open Library App</h1><br>
-    <h2><label for="login">Login Here:</label><br></h2>
-    <label for="username">Username:</label>
-    <input type="text" id="username" name="username-input"></br>
-    <button type="submit" id="login" name= "login">Login</button>
-    <button type="submit" id="signup" name= "signup">Signup</button>
+    <h2><label for="login" id="login-label">Login Here:</label><br></h2>
+        <label for="username" id="user-label">Username:</label>
+        <input type="text" id="username" name="username-input"></br>
+        <button type="submit" id="login" name= "login">Login</button>
+        <button type="submit" id="signup" name= "signup">Signup</button>
 
+    <h3 id="logged-in"></h3>
+    
     <h2 class="second-title">Search the Library</h2><br>
     <form id="search-form">
         <label for="book">Search by:</label>
@@ -33,7 +35,7 @@
     <button id="pop-titles">Search Popular Authors</button><br> -->
     <div id="book-info"></div>
     <div id="book-list"></div>
-    <h3>My Library</h3>
+    <h3 id="cookie-name"></h3>
     <div id="my-library"></div>
     <!-- Add more buttons based on the data that comes from the user that logs in -->
 
