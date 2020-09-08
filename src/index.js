@@ -14,13 +14,20 @@ document.addEventListener("DOMContentLoaded", e=>{
         }
         else if (e.target.matches(".liked")){
             if (cookies !== ''){
-                let id = parseInt(e.target.id,10)
-                
-                FetchAdapter.fetchBook(id)
-                .then(bookObj => {
-                    let book = new Book(bookObj)
-                    book.myLibrary()
+                let bookId = parseInt(e.target.id,10)
+                let userId = parseInt(libraryTag.dataset.id)
+                Checkout.createCheckout(userId, bookId)
+                .then(checkoutObj => {
+                    // let newCheckout = new Checkout(checkoutObj)
+                    console.log(checkoutObj)
+
+
                 })
+
+                
+                // FetchAdapter.fetchBook(id)
+                // .then(bookObj => {
+                // })
             }
             else {
                 e.target.disabled = true
@@ -99,6 +106,7 @@ document.addEventListener("DOMContentLoaded", e=>{
     const userProtocol = (user) => {
         cookies = User.setCookie(user.username)
         libraryTag.innerText = `${cookies}'s Library`
+        libraryTag.dataset.id = user.id
         statusBar.innerHTML = `Logged in as ${cookies}<br>
         <button id="log-out">Logout</button><br>
         <button id="delete" data-id="${user.id}">Delete User Account</button>`

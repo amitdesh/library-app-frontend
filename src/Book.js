@@ -39,15 +39,6 @@ class Book{
         <button class="liked" id="${this.id}">Add This Book To Your Library</button>`
     }
 
-    myLibrary(){
-        let myLib = document.querySelector("#my-library")
-        console.log(myLib)
-        const bookEntry = document.createElement('p')
-        bookEntry.innerHTML = `
-        <h5>${this.title} by ${this.author}</h5>`
-        myLib.append(bookEntry)
-    }
-
     render(bookList){
         const bookLi = document.createElement("li")
         bookLi.classList.add("book")
