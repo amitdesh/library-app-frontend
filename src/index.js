@@ -18,16 +18,10 @@ document.addEventListener("DOMContentLoaded", e=>{
                 let userId = parseInt(libraryTag.dataset.id)
                 Checkout.createCheckout(userId, bookId)
                 .then(checkoutObj => {
-                    // let newCheckout = new Checkout(checkoutObj)
-                    console.log(checkoutObj)
-
+                    Checkout.addToMyLibrary(checkoutObj)
+                    bookShowPage.innerHTML=''
 
                 })
-
-                
-                // FetchAdapter.fetchBook(id)
-                // .then(bookObj => {
-                // })
             }
             else {
                 e.target.disabled = true
@@ -47,17 +41,18 @@ document.addEventListener("DOMContentLoaded", e=>{
             User.deleteUser(userID)
             statusBar.innerText = ''
             libraryTag.innerText = ''
+            libraryItems.innerHTML = ''
             User.deleteCookie()
             userLogin("block")
         }
         else if (e.target.matches("#log-out")){
             statusBar.innerText = ''
             libraryTag.innerText = ''
+            libraryItems.innerHTML = ''
             User.deleteCookie
             userLogin("block")
         }
         else if (e.target.matches("#login")){
-            console.log("clicked")
             let username  = document.querySelector('#username').value
             User.loginUser()
             .then(userArray =>{
@@ -65,8 +60,19 @@ document.addEventListener("DOMContentLoaded", e=>{
                 console.log(loggedInUser)
                 userProtocol(loggedInUser)
                 userLogin("none")
+                Checkout.renderMyLibrary(loggedInUser)
             })
-        }         
+        }
+        else if (e.target.matches("#delete-book")){
+            console.log("clicked")
+            let checkoutID  = parseInt(e.target.dataset.id,10)
+            console.log(checkoutID)
+            Checkout.deleteBook(checkoutID)
+            .then(userArray =>{
+                let bookLi = e.target.previousElementSibling
+                bookLi.remove()
+            })
+        }           
     })
 
     document.addEventListener("submit", e=>{
@@ -102,6 +108,8 @@ document.addEventListener("DOMContentLoaded", e=>{
     
     let statusBar  = document.querySelector('#logged-in')
     let libraryTag  = document.querySelector('#cookie-name')
+    let libraryItems  = document.querySelector('#my-library')
+    let bookShowPage  = document.querySelector('#book-info')
     
     const userProtocol = (user) => {
         cookies = User.setCookie(user.username)
