@@ -7,9 +7,28 @@
     <script src="src/Book.js"></script>
     <script src="src/fetch.js"></script>
     <script src="src/index.js"></script>
+    <link rel="stylesheet" type= "text/css" href="./styles/style.css"></script>
+    <script src="src/slider.js"></script>
+
     <title>Library App</title>
 </head>
 <body>
+
+    <div class="carousel-wrapper">
+        <div class="book-list">
+            <div class="carousel__button--next"></div>
+            <div class="carousel__button--prev"></div>
+          <img class="carousel__photo initial" src="https://via.placeholder.com/150">
+          <!-- <img class="carousel__photo" src="https://via.placeholder.com/150">
+          <img class="carousel__photo" src="https://via.placeholder.com/150">
+          <img class="carousel__photo" src="https://via.placeholder.com/150">
+          <img class="carousel__photo" src="https://via.placeholder.com/150"> -->
+            
+        </div>
+      </div>
+
+
+
     <h1 class="main-title">Welcome to the Open Library App</h1><br>
     <h2><label for="login" id="login-label">Login Here:</label><br></h2>
         <label for="username" id="user-label">Username:</label>
@@ -20,6 +39,8 @@
     <h3 id="logged-in"></h3>
     
     <h2 class="second-title">Search the Library</h2><br>
+
+
     <form id="search-form">
         <label for="book">Search by:</label>
         <select id="search-method" name="search-method">
@@ -34,7 +55,8 @@
     <!-- <button id="pop-author">Search Popular Titles</button><br>
     <button id="pop-titles">Search Popular Authors</button><br> -->
     <div id="book-info"></div>
-    <div id="book-list"></div>
+    <!-- <div id="book-list"></div> -->
+  
     <h3 id="cookie-name"></h3>
     <div id="my-library"></div>
     <!-- Add more buttons based on the data that comes from the user that logs in -->

@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", e=>{
     var cookies = ""
 
     document.addEventListener('click', e=>{
-        if (e.target.matches(".specific-book")){
+        if (e.target.matches(".carousel__photo")){
             let id = e.target.id
             FetchAdapter.fetchBook(id)
             .then(bookObj => {
@@ -66,16 +66,17 @@ document.addEventListener("DOMContentLoaded", e=>{
         e.preventDefault()
         if (e.target.matches('#search-form')){
             let form = e.target
-            let bookDiv = document.querySelector("#book-list")
+            let bookDiv = document.querySelector(".book-list")
             let searchWords = form['search-q'].value
             let searchBy = form['search-method'].value
             FetchAdapter.fetch()
                 .then(bookCollection => {
                     let books = bookCollection.map(bookObj => new Book(bookObj))
                     let filteredBooks = Book.searchFilter(books, searchWords, searchBy)
-                    bookDiv.innerHTML = ""
+                    // bookDiv.innerHTML = ""
                     Book.renderBooks(filteredBooks, bookDiv)
                 })
+                .then(eventHandler)
             form.reset()
         }
     })

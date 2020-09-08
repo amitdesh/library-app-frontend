@@ -49,15 +49,11 @@ class Book{
     }
 
     render(bookList){
-        const bookLi = document.createElement("li")
-        bookLi.classList.add("book")
-
-        bookLi.innerHTML = `<button class="specific-book" id=${this.id}>
-        <h3>${this.title}</h3>
-        <h4>Author: ${this.author}</h4>
-        <img src="${this.image}"/>
-        </button>
-        `
-        bookList.append(bookLi)
+        let bookImg = document.createElement("INPUT");
+        bookImg.setAttribute("type", "image");
+        bookImg.classList.add("carousel__photo")
+        bookImg.id = `${this.id}`
+        bookImg.src = `${this.image}`
+        bookList.appendChild(bookImg)
     }
 }
