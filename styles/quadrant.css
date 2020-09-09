@@ -1,0 +1,132 @@
+html, body { height: 100%; padding: 0; margin: 0; }
+div { width: 50%; height: 50%; float: left; }
+#div1 img{
+    margin: center center;
+    background-repeat: no-repeat;
+    background-color: #464646
+ }
+ .popular_image{
+    background-color: #464646;
+    width: 100%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: -30px;
+    overflow: hidden;
+ }
+
+ #div1 button:hover{
+     background-color: black;
+     
+     
+ }
+
+ #div2 button:hover{
+    background-color: black;
+}
+#div3 button:hover{
+    background-color: black;
+}
+#div4 button:hover{
+    background-color: black;
+}
+
+ #div1 .popular_image_btn{
+        font-family: 'Kumbh Sans', sans-serif;
+        position: absolute;
+        top: 25%;
+        left: 25%;
+        transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        background-color: #555;
+        color: white;
+        font-size: 16px;
+        padding: 12px 24px;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+ }
+
+ #div2 .author_image_btn{
+    font-family: 'Kumbh Sans', sans-serif;
+    position: absolute;
+    top: 25%;
+    left: 75%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    background-color: #555;
+    color: white;
+    font-size: 16px;
+    padding: 12px 24px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#div3 .search_image_btn{
+    font-family: 'Kumbh Sans', sans-serif;
+    position: absolute;
+    top: 75%;
+    left: 25%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    background-color: #555;
+    color: white;
+    font-size: 16px;
+    padding: 12px 24px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#div4 .login_image_btn{
+    font-family: 'Kumbh Sans', sans-serif;
+    position: absolute;
+    top: 75%;
+    left: 75%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    background-color: #555;
+    color: white;
+    font-size: 16px;
+    padding: 12px 24px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+ .famous_author_image{
+    background-color: #464646;
+    width: 100%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: -30px;
+    overflow: hidden;
+ }
+
+ .search_image{
+    background-color: #464646;
+    width: 100%;
+    height: 100%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: -30px;
+    overflow: hidden;
+ }
+
+ .login_image{
+    background-color: #464646;
+    width: 100%;
+    height: 100%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: -30px;
+    overflow: hidden;
+ }
+
+#div2 { background: #AAA; }
+#div3 { background: #777; }
+#div4 { background: #444; }
