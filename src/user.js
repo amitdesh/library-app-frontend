@@ -63,12 +63,11 @@ class User {
             method: "DELETE",
             headers: {
                 'content-type': 'application/json',
-                'accept': "application.json"
             }
         }
 
         fetch(`http://localhost:3000/users/`+id,options)
-        .then(resp => resp.json())
+        // .then(resp => resp.json())
 
     }
 

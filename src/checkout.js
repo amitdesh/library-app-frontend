@@ -40,10 +40,10 @@ class Checkout {
         let libBooks = user.books
         let libCheckouts = user.checkouts
         for (let i = 0; i< libBooks.length; i++){
-            bookEntry.innerHTML = `
+            myLib.insertAdjacentHTML('beforeend', `
             <h5>${libBooks[i]['title']} by ${libBooks[i]['author']}</h5>
             <button id="delete-book" data-id=${libCheckouts[i]['id']}>Delete Book</button>`
-            myLib.append(bookEntry)
+            )
         }
     }
 
@@ -53,12 +53,11 @@ class Checkout {
             method: "DELETE",
             headers: {
                 'content-type': 'application/json',
-                'accept': "application.json"
             }
         }
 
         return fetch('http://localhost:3000/checkouts/'+id, options)
-        .then(resp => resp.json())
+        // .then(resp => resp.json())
 
 
 

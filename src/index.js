@@ -64,13 +64,14 @@ document.addEventListener("DOMContentLoaded", e=>{
             })
         }
         else if (e.target.matches("#delete-book")){
-            console.log("clicked")
+            let deleteButton = e.target
             let checkoutID  = parseInt(e.target.dataset.id,10)
             console.log(checkoutID)
             Checkout.deleteBook(checkoutID)
             .then(userArray =>{
-                let bookLi = e.target.previousElementSibling
+                let bookLi = deleteButton.previousElementSibling
                 bookLi.remove()
+                deleteButton.remove()
             })
         }           
     })
