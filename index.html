@@ -6,6 +6,8 @@
     <script src="src/checkout.js"></script>
     <script src="src/user.js"></script>
     <script src="src/Book.js"></script>
+    <script src="src/formRender.js"></script>
+
     <script src="src/fetch.js"></script>
     <script src="src/index.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
@@ -29,8 +31,11 @@
         <button class="search_image_btn"> Search</button>
     </div>
     <div id="div4">
+        <h3 id="logged-in"></h3>
         <img class="login_image" src="https://images.unsplash.com/photo-1551703599-6b3e8379aa8c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1052&q=80">
-        <button class="login_image_btn">Log-in</button>
+        <button id="login_btn">Log-in</button>
+        <button id="sign_up">Sign-up</button>
+        <input type="text" id="username" name="username-input">
     </div>
 </body>
 <!-- <body>
@@ -63,6 +68,8 @@
         </select>
     </form>
 
+    
+
     <!-- <button id="pop-author">Search Popular Titles</button><br>
     <button id="pop-titles">Search Popular Authors</button><br> -->
     <div id="book-info"></div>
@@ -71,6 +78,6 @@
     <div id="my-library"></div>
     <!-- Add more buttons based on the data that comes from the user that logs in -->
 
-</body> -->
+</body>
 </html>
 

@@ -81,11 +81,21 @@ class User {
             for (const user of allUsers){
                 if (user.username === username){
                     matchedUser.push(user)
+                    let logBtn = document.querySelector("#login_btn")
+                    let signBtn = document.querySelector("#sign_up")
+                    signBtn.dataset.id = `${user.id}`
+                    signBtn.id = "delete"
+                    signBtn.innerText = "Delete User"
+                    logBtn.id = "log-out"
+                    logBtn.dataset.id = `${user.id}`
+                    logBtn.innerText = "Log-out"
+
                 }
             }
             if(matchedUser.length === 0) {
                 alert("Please try again. There is no existing user with this username")
             }
+            
             return matchedUser[0]
 
     }

@@ -27,8 +27,29 @@ div { width: 50%; height: 50%; float: left; }
 #div3 button:hover{
     background-color: black;
 }
-#div4 button:hover{
+#div4 #login_btn:hover{
     background-color: black;
+}
+
+#div4 #log-out:hover{
+    background-color: black;
+}
+
+#div4 #delete:hover{
+    background-color: black;
+}
+
+#div4 #sign_up:hover{
+    background-color: black;
+}
+
+
+
+#div4 div{
+    display: block;
+    position: absolute;
+    top: 80%;
+    left: 65%;
 }
 
  #div1 .popular_image_btn{
@@ -46,6 +67,22 @@ div { width: 50%; height: 50%; float: left; }
         cursor: pointer;
         border-radius: 5px;
  }
+
+ #div4 #delete{
+    font-family: 'Kumbh Sans', sans-serif;
+    position: absolute;
+    top: 80%;
+    left: 75%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    background-color: #555;
+    color: white;
+    font-size: 16px;
+    padding: 12px 24px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
 
  #div2 .author_image_btn{
     font-family: 'Kumbh Sans', sans-serif;
@@ -79,7 +116,61 @@ div { width: 50%; height: 50%; float: left; }
     border-radius: 5px;
 }
 
-#div4 .login_image_btn{
+#div4 #login_btn{
+    font-family: 'Kumbh Sans', sans-serif;
+    position: absolute;
+    top: 75%;
+    left: 75%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    background-color: #555;
+    color: white;
+    font-size: 16px;
+    padding: 12px 24px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#div4 #library_render{
+    font-family: 'Kumbh Sans', sans-serif;
+    position: absolute;
+    top: 90%;
+    left: 75%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    background-color: #555;
+    color: white;
+    font-size: 16px;
+    padding: 12px 24px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#div4 #username{
+    position: absolute;
+    top: 70%;
+    left: 70%
+}
+
+#div4 #sign_up{
+    font-family: 'Kumbh Sans', sans-serif;
+    position: absolute;
+    top: 80%;
+    left: 75%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    background-color: #555;
+    color: white;
+    font-size: 16px;
+    padding: 12px 24px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#div4 #log-out{
     font-family: 'Kumbh Sans', sans-serif;
     position: absolute;
     top: 75%;
