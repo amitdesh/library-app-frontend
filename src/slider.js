@@ -1,4 +1,16 @@
-
+  function createSliderHTML(){
+      let carousel = document.querySelector(".book-list")
+      if (carousel.querySelector(".carousel__photo--next")){}
+      else{
+        console.log("hey")
+      carousel.classList.add("carousel-wrapper")
+      carousel.innerHTML =`
+           <div class="carousel__button--next"></div>
+           <div class="carousel__button--prev"></div>
+      `
+  }
+}
+    
     function eventHandler(){
     !function(d){
         var itemClassName = "carousel__photo";

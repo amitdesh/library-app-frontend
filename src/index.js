@@ -71,6 +71,7 @@ document.addEventListener("DOMContentLoaded", e=>{
             let searchBy = form['search-method'].value
             FetchAdapter.fetch()
                 .then(bookCollection => {
+                    createSliderHTML()
                     let books = bookCollection.map(bookObj => new Book(bookObj))
                     let filteredBooks = Book.searchFilter(books, searchWords, searchBy)
                     // bookDiv.innerHTML = ""

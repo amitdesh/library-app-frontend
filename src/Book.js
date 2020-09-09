@@ -19,7 +19,8 @@ class Book{
 
     static searchFilter(bookArray, searchWords, searchBy){
         let filteredBookArray = []
-        for (let i =0; i< bookArray.length; i++){
+        for (let i =0; i< bookArray.length                // .then(createSliderHTML)
+        ; i++){
             if (bookArray[i][searchBy].includes(searchWords)){
                 filteredBookArray.push(bookArray[i])
             }
@@ -44,7 +45,8 @@ class Book{
         console.log(myLib)
         const bookEntry = document.createElement('p')
         bookEntry.innerHTML = `
-        <h5>${this.title} by ${this.author}</h5>`
+        <h5>${this.title} by ${this.author}</h5>
+        `
         myLib.append(bookEntry)
     }
 
