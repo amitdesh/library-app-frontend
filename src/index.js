@@ -85,6 +85,23 @@ document.addEventListener("DOMContentLoaded", e=>{
 
             })
         }
+        else if (e.target.matches(".search_btn")){
+            let searchInput = document.createElement("div")
+            let container = document.querySelector("#div3")
+            searchInput.innerHTML=`
+            <form id="search-form">
+                <select id="search-method" name="search-method">
+                        <option name= "author" value="author">Author</option>
+                        <option name="title" value="title">Title</option>
+                 <label for="search-q">Search:</label>
+                <input type="text" id="search-q" name="search-bar">
+                <input type="submit" id="submit" name= "Submit">
+                </select>
+            </form>`
+    container.appendChild(searchInput)
+            
+
+        }
         else if (e.target.matches("#delete_book")){
             let username = document.querySelector("#library_render").dataset.name
             let activeImg = document.querySelector(".active")
