@@ -73,6 +73,10 @@ document.addEventListener("DOMContentLoaded", e=>{
         else if (e.target.matches("#login_btn")){
             loginRender()
             }
+
+        else if (e.target.matches("#library_render")){
+            
+        }
         else if (e.target.matches("#delete-book")){
             let deleteButton = e.target
             let checkoutID  = parseInt(e.target.dataset.id,10)
