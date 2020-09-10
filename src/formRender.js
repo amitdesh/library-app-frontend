@@ -10,3 +10,11 @@ function loginRender(){
         `
     )
 }
+
+function createAddBtn(){
+    let addBtn = document.createElement("button")
+    container = document.querySelector("#div4")
+    addBtn.classList.add("liked")
+    addBtn.innerText = "Like"
+    container.append(addBtn)
+}

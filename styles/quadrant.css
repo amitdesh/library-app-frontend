@@ -157,6 +157,10 @@ border-radius: 5px;
     cursor: pointer;
     border-radius: 5px;
 }
+#div4 .liked{
+    top: 130%;
+    left: 50%
+}
 
 #div4 #library_render{
     font-family: 'Kumbh Sans', sans-serif;

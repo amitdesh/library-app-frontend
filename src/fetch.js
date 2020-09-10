@@ -12,5 +12,10 @@ class FetchAdapter {
         .then(resp => resp.json())
     }
 
+    static fetchAuthor(){
+        this.baseURL = `http://localhost:3000/author/popauthor`
+        return fetch(this.baseURL)
+        .then(resp => resp.json())
+    }
 
 }

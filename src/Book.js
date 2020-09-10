@@ -16,6 +16,16 @@ class Book{
         }
     }
 
+    static popularBooks(bookArray){
+        let filteredBookArray = []
+        for (let i =0; i< bookArray.length; i++){
+            if (bookArray[i]["popularity"] > 7){
+                filteredBookArray.push(bookArray[i])
+            }
+        }
+        return filteredBookArray
+    }
+
 
     static searchFilter(bookArray, searchWords, searchBy){
         let filteredBookArray = []
@@ -43,6 +53,8 @@ class Book{
         let bookImg = document.createElement("INPUT");
         bookImg.setAttribute("type", "image");
         bookImg.classList.add("carousel__photo")
+        bookImg.dataset.title = `${this.title}`
+        bookImg.dataset.author = `${this.author}`
         bookImg.id = `${this.id}`
         bookImg.src = `${this.image}`
         bookList.appendChild(bookImg)

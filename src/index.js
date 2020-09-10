@@ -1,7 +1,7 @@
 console.log("Hello")
 
 document.addEventListener("DOMContentLoaded", e=>{
-    var cookies = ""
+    let cookies = ''
 
     document.addEventListener('click', e=>{
         if (e.target.matches(".specific-book")){
@@ -14,19 +14,51 @@ document.addEventListener("DOMContentLoaded", e=>{
         }
         if (e.target.matches(".liked")){
             if (cookies !== ''){
-                let bookId = parseInt(e.target.id,10)
-                let userId = parseInt(libraryTag.dataset.id)
+                let logBtn = document.querySelector("#log-out")
+                let userId = logBtn.dataset.id
+                let bookImg = document.querySelector(".active")
+                let bookId = bookImg.id
                 Checkout.createCheckout(userId, bookId)
-                .then(checkoutObj => {
-                    Checkout.addToMyLibrary(checkoutObj)
-                    bookShowPage.innerHTML=''
-
-                })
             }
             else {
                 e.target.disabled = true
             }
         }
+
+        if (e.target.matches(".popular_image_btn")){
+            let carousel = document.querySelector(".carousel_wrapper")
+            carousel.innerHTML = ""
+            // debugger
+            createSliderHTML()
+            createAddBtn()
+            FetchAdapter.fetch()
+            .then( bookArray =>{
+                let books = bookArray.map(bookObj => new Book(bookObj))
+                let popularBooks = Book.popularBooks(books)
+                Book.renderBooks(popularBooks, carousel)
+                eventHandler()
+            }
+            )
+            
+        }
+
+        if (e.target.matches(".author_btn")){
+            let carousel = document.querySelector(".carousel_wrapper")
+            carousel.innerHTML = ""
+            // debugger
+            createSliderHTML()
+            createAddBtn()
+            FetchAdapter.fetchAuthor()
+            .then( bookArray =>{
+                console.log(bookArray)
+                let books = bookArray.map(bookObj => new Book(bookObj))
+                Book.renderBooks(books, carousel)
+                eventHandler()
+            }
+            )
+            
+        }
+
         if (e.target.matches("#sign_up")){
             let username  = document.querySelector('#username').value
             User.createNewUser(username)
@@ -54,7 +86,7 @@ document.addEventListener("DOMContentLoaded", e=>{
             e.target.innerText = "Log-in"
             e.target.id = "login_btn"
             libraryTag.innerText = ''
-            libraryItems.innerHTML = ''
+            // libraryItems.innerHTML = ''
             User.deleteCookie
             userLogin("block")
         }
@@ -76,6 +108,7 @@ document.addEventListener("DOMContentLoaded", e=>{
 
         if (e.target.matches("#library_render")){
             let username = e.target.dataset.name
+            createAddBtn()
             createSliderHTML()
             User.loginUser()
             .then(userArray =>{
@@ -124,10 +157,10 @@ document.addEventListener("DOMContentLoaded", e=>{
     document.addEventListener("submit", e =>{
         e.preventDefault()
     })
+})
 
     document.addEventListener("click", e=>{
-        console.log(e.target)
-        if (e.target.name === "Submit"){
+            if (e.target.name === "Submit"){
             debugger
             let form = document.querySelector("#search-form")
             let sliderContainer = document.querySelector(".carousel_wrapper")
@@ -173,5 +206,4 @@ document.addEventListener("DOMContentLoaded", e=>{
         
         
     }
-})
 })
