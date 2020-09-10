@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", e=>{
                 book.renderShowBook()
             })
         }
-        else if (e.target.matches(".liked")){
+        if (e.target.matches(".liked")){
             if (cookies !== ''){
                 let bookId = parseInt(e.target.id,10)
                 let userId = parseInt(libraryTag.dataset.id)
@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", e=>{
                 e.target.disabled = true
             }
         }
-        else if (e.target.matches("#sign_up")){
+        if (e.target.matches("#sign_up")){
             let username  = document.querySelector('#username').value
             User.createNewUser(username)
             .then(newUserObj => {
@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", e=>{
                 setTimeout(alert("Thanks for signing up! You have now created a new user"),2000)
             })
         }
-        else if (e.target.matches("#delete")){
+        if (e.target.matches("#delete")){
             let userID = e.target.dataset.id
             User.deleteUser(userID)
             // statusBar.innerText = ''
@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", e=>{
             User.deleteCookie()
             userLogin("block")
         }
-        else if (e.target.matches("#log-out")){
+        if (e.target.matches("#log-out")){
             let signBtn = document.querySelector("#delete")
             statusBar.innerText = ""
             signBtn.innerText = "Sign-up"
@@ -58,7 +58,7 @@ document.addEventListener("DOMContentLoaded", e=>{
             User.deleteCookie
             userLogin("block")
         }
-        else if(e.target.matches("#login_btn")){
+        if(e.target.matches("#login_btn")){
             let username  = document.querySelector('#username').value
             User.loginUser()
             .then(userArray =>{
@@ -70,11 +70,11 @@ document.addEventListener("DOMContentLoaded", e=>{
                 // e.target.id = "log-out"
             })
         }
-        else if (e.target.matches("#login_btn")){
+        if (e.target.matches("#login_btn")){
             loginRender()
             }
 
-        else if (e.target.matches("#library_render")){
+        if (e.target.matches("#library_render")){
             let username = e.target.dataset.name
             createSliderHTML()
             User.loginUser()
@@ -85,7 +85,9 @@ document.addEventListener("DOMContentLoaded", e=>{
 
             })
         }
-        else if (e.target.matches(".search_btn")){
+        if (e.target.matches(".search_btn")){
+            if (document.querySelector("#search-form")){}
+            else{
             let searchInput = document.createElement("div")
             let container = document.querySelector("#div3")
             searchInput.innerHTML=`
@@ -98,11 +100,12 @@ document.addEventListener("DOMContentLoaded", e=>{
                 <input type="submit" id="submit" name= "Submit">
                 </select>
             </form>`
-    container.appendChild(searchInput)
+        container.appendChild(searchInput)
+            }
             
 
         }
-        else if (e.target.matches("#delete_book")){
+        if (e.target.matches("#delete_book")){
             let username = document.querySelector("#library_render").dataset.name
             let activeImg = document.querySelector(".active")
             let checkoutID = activeImg.id
@@ -111,32 +114,40 @@ document.addEventListener("DOMContentLoaded", e=>{
                 activeImg.remove()
             })
             User.loginUser()
-            .then(userArray =>{
+            .thesubmitn(userArray =>{
 
                 let loggedInUser = User.userMatching(userArray, username, 1)
                 Checkout.renderMyLibrary(loggedInUser)
         })
     }
 
-    document.addEventListener("submit", e=>{
+    document.addEventListener("submit", e =>{
         e.preventDefault()
-        if (e.target.matches('#search-form')){
-            let form = e.target
-            let bookDiv = document.querySelector("#book-list")
+    })
+
+    document.addEventListener("click", e=>{
+        console.log(e.target)
+        if (e.target.name === "Submit"){
+            debugger
+            let form = document.querySelector("#search-form")
+            let sliderContainer = document.querySelector(".carousel_wrapper")
             let searchWords = form['search-q'].value
             let searchBy = form['search-method'].value
+            sliderContainer.innerHTML = ""
+            createSliderHTML()
             FetchAdapter.fetch()
                 .then(bookCollection => {
                     let books = bookCollection.map(bookObj => new Book(bookObj))
                     let filteredBooks = Book.searchFilter(books, searchWords, searchBy)
-                    bookDiv.innerHTML = ""
-                    Book.renderBooks(filteredBooks, bookDiv)
+                    Book.renderBooks(filteredBooks, sliderContainer)
+                    eventHandler()
                 })
-            form.reset()
+            // form.reset()
         }
     })
     
     const userLogin = (displayType) => {
+        debugger
         let usernameForm = document.querySelector('#username')
         usernameForm.style.display = displayType
     }
@@ -147,6 +158,7 @@ document.addEventListener("DOMContentLoaded", e=>{
     let bookShowPage  = document.querySelector('#book-info')
 
     const userProtocol = (user) => {
+        debugger
         let container = document.querySelector("#div4")
         let libraryBtn = document.createElement("button")
         libraryBtn.id = "library_render"

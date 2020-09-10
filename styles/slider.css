@@ -50,7 +50,7 @@
 .carousel__button--prev,
 .carousel__button--next {
   position: absolute;
-  top:10%;
+  top:120%;
   width: 3rem;
   height: 3rem;
   background-color: #FFF;

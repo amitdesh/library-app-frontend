@@ -1,9 +1,8 @@
 function createSliderHTML(){
-  let carousel = document.querySelector(".book-list")
+  let carousel = document.querySelector(".carousel_wrapper")
   if (carousel.querySelector(".carousel__photo--next")){}
   else{
     console.log("hey")
-  carousel.classList.add("carousel_wrapper")
   carousel.innerHTML =`
        <div class="carousel__button--next"></div>
        <div class="carousel__button--prev"></div>
