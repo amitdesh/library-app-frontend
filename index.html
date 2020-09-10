@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="src/slider.js"></script>
+   
     <script src="src/checkout.js"></script>
     <script src="src/user.js"></script>
     <script src="src/Book.js"></script>
@@ -33,14 +35,19 @@
         <button class="search_image_btn"> Search</button>
     </div>
     <div id="div4">
+        <h3 id="cookie-name"></h3>
         <h3 id="logged-in"></h3>
         <img class="login_image" src="https://images.unsplash.com/photo-1551703599-6b3e8379aa8c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1052&q=80">
         <button id="login_btn">Log-in</button>
         <button id="sign_up">Sign-up</button>
         <input type="text" id="username" name="username-input">
     </div>
+    <div class="carousel_wrapper">
+        <div class="book-list">
+        </div>
+    </div>
 </body>
-<!-- <body>
+<!-- <>
     <div class="header">
         <div class="inner_header">
             <button class="show_login_form">Log In</button>
@@ -74,12 +81,7 @@
 
     <!-- <button id="pop-author">Search Popular Titles</button><br>
     <button id="pop-titles">Search Popular Authors</button><br> -->
-    <div id="book-info"></div>
-    <div id="book-list"></div>
     <h3 id="cookie-name"></h3>
-    <div id="my-library"></div>
     <!-- Add more buttons based on the data that comes from the user that logs in -->
-
-</body>
 </html>
 

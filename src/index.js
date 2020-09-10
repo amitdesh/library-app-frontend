@@ -66,7 +66,7 @@ document.addEventListener("DOMContentLoaded", e=>{
                 console.log(loggedInUser)
                 userProtocol(loggedInUser)
                 // userLogin("none")
-                Checkout.renderMyLibrary(loggedInUser)
+                // Checkout.renderMyLibrary(loggedInUser)
                 // e.target.id = "log-out"
             })
         }
@@ -75,20 +75,31 @@ document.addEventListener("DOMContentLoaded", e=>{
             }
 
         else if (e.target.matches("#library_render")){
-            
-        }
-        else if (e.target.matches("#delete-book")){
-            let deleteButton = e.target
-            let checkoutID  = parseInt(e.target.dataset.id,10)
-            console.log(checkoutID)
-            Checkout.deleteBook(checkoutID)
+            let username = e.target.dataset.name
+            createSliderHTML()
+            User.loginUser()
             .then(userArray =>{
-                let bookLi = deleteButton.previousElementSibling
-                bookLi.remove()
-                deleteButton.remove()
+                let loggedInUser = User.userMatching(userArray, username, 1)
+                Checkout.renderMyLibrary(loggedInUser)
+                eventHandler()
+
             })
-        }           
-    })
+        }
+        else if (e.target.matches("#delete_book")){
+            let username = document.querySelector("#library_render").dataset.name
+            let activeImg = document.querySelector(".active")
+            let checkoutID = activeImg.id
+            Checkout.deleteBook(checkoutID)
+            .then(blah => {
+                activeImg.remove()
+            })
+            User.loginUser()
+            .then(userArray =>{
+
+                let loggedInUser = User.userMatching(userArray, username, 1)
+                Checkout.renderMyLibrary(loggedInUser)
+        })
+    }
 
     document.addEventListener("submit", e=>{
         e.preventDefault()
@@ -123,9 +134,9 @@ document.addEventListener("DOMContentLoaded", e=>{
         let libraryBtn = document.createElement("button")
         libraryBtn.id = "library_render"
         libraryBtn.innerText = "Show My Library"
-        libraryBtn.dataset.id= user.id
+        libraryBtn.dataset.name= user.username
         cookies = User.setCookie(user.username)
-        libraryTag.innerText = `${cookies}'s Library`
+        // libraryTag.innerText = `${cookies}'s Library`
         libraryTag.dataset.id = user.id
         statusBar.innerHTML = `Logged in as ${cookies}<br>`
         container.append(libraryBtn)
@@ -134,6 +145,4 @@ document.addEventListener("DOMContentLoaded", e=>{
         
     }
 })
-
-
-
+})

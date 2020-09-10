@@ -3,7 +3,7 @@ function createSliderHTML(){
   if (carousel.querySelector(".carousel__photo--next")){}
   else{
     console.log("hey")
-  carousel.classList.add("carousel-wrapper")
+  carousel.classList.add("carousel_wrapper")
   carousel.innerHTML =`
        <div class="carousel__button--next"></div>
        <div class="carousel__button--prev"></div>
@@ -13,7 +13,7 @@ function createSliderHTML(){
 
 function eventHandler(){
 !function(d){
-    var itemClassName = "carousel__photo";
+    let itemClassName = "carousel__photo";
     let items = d.getElementsByClassName(itemClassName),
     totalItems = items.length,
     slide = 0,

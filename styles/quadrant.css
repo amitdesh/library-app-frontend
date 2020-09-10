@@ -56,6 +56,21 @@ div { width: 50%; height: 50%; float: left; }
     top: 80%;
     left: 65%;
 }
+body button{
+font-family: 'Kumbh Sans', sans-serif;
+position: absolute;
+top: 100%;
+left: 50%;
+transform: translate(-50%, -50%);
+-ms-transform: translate(-50%, -50%);
+background-color: #555;
+color: white;
+font-size: 16px;
+padding: 12px 24px;
+border: none;
+cursor: pointer;
+border-radius: 5px;
+}
 
  #div1 .popular_image_btn{
         font-family: 'Kumbh Sans', sans-serif;

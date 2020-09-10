@@ -76,11 +76,12 @@ class User {
         .then(resp => resp.json())
     }
 
-    static userMatching = (allUsers, username) =>{
+    static userMatching = (allUsers, username, value = 0) =>{
         let matchedUser = []
             for (const user of allUsers){
                 if (user.username === username){
                     matchedUser.push(user)
+                    if (value === 0){
                     let logBtn = document.querySelector("#login_btn")
                     let signBtn = document.querySelector("#sign_up")
                     signBtn.dataset.id = `${user.id}`
@@ -89,7 +90,7 @@ class User {
                     logBtn.id = "log-out"
                     logBtn.dataset.id = `${user.id}`
                     logBtn.innerText = "Log-out"
-
+                    }
                 }
             }
             if(matchedUser.length === 0) {

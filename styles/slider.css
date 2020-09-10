@@ -36,7 +36,7 @@
 
 .carousel__photo.prev,
 .carousel__photo.next {
-  opacity: 100;
+  opacity: 0;
   z-index: 800;
 }
 
@@ -50,7 +50,7 @@
 .carousel__button--prev,
 .carousel__button--next {
   position: absolute;
-  top:50%;
+  top:10%;
   width: 3rem;
   height: 3rem;
   background-color: #FFF;

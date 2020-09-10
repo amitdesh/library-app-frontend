@@ -35,15 +35,20 @@ class Checkout {
     }
 
     static renderMyLibrary = (user) => {
-        let myLib = document.querySelector("#my-library")
-        const bookEntry = document.createElement('p')
+        let myLib = document.querySelector(".carousel_wrapper")
         let libBooks = user.books
         let libCheckouts = user.checkouts
+        let deleteBtn = document.createElement("button")
+        deleteBtn.id = "delete_book"
+        deleteBtn.innerText = "Delete"
+        myLib.append(deleteBtn)
         for (let i = 0; i< libBooks.length; i++){
-            myLib.insertAdjacentHTML('beforeend', `
-            <h5>${libBooks[i]['title']} by ${libBooks[i]['author']}</h5>
-            <button id="delete-book" data-id=${libCheckouts[i]['id']}>Delete Book</button>`
-            )
+            const bookEntry = document.createElement('input')
+            bookEntry.type = "image"
+            bookEntry.classList.add("carousel__photo")
+            bookEntry.src = libBooks[i]['image']
+            bookEntry.id = libCheckouts[i]['id']
+            myLib.appendChild(bookEntry)
         }
     }
 
