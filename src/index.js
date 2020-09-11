@@ -26,6 +26,10 @@ document.addEventListener("DOMContentLoaded", e=>{
         }
 
         if (e.target.matches(".popular_image_btn")){
+            if(!document.querySelector("#book_box")){
+                let container = document.querySelector("book_box")
+                container.remove()
+            }
             let carousel = document.querySelector(".carousel_wrapper")
             carousel.innerHTML = ""
             // debugger
@@ -37,6 +41,7 @@ document.addEventListener("DOMContentLoaded", e=>{
                 let popularBooks = Book.popularBooks(books)
                 Book.renderBooks(popularBooks, carousel)
                 eventHandler()
+                infoRender()
             }
             )
             
@@ -54,6 +59,7 @@ document.addEventListener("DOMContentLoaded", e=>{
                 let books = bookArray.map(bookObj => new Book(bookObj))
                 Book.renderBooks(books, carousel)
                 eventHandler()
+                infoRender()
             }
             )
             
@@ -62,33 +68,39 @@ document.addEventListener("DOMContentLoaded", e=>{
         if (e.target.matches("#sign_up")){
             let username  = document.querySelector('#username').value
             User.createNewUser(username)
-            .then(newUserObj => {
-                User.userMatching(newUserObj)
-                // userProtocol(newUserObj)
-                userLogin("none")
-                setTimeout(alert("Thanks for signing up! You have now created a new user"),2000)
-            })
+            .then(
+                dummy=>{
+                    User.loginUser()
+                    .then(userArray =>{
+                        let loggedInUser = User.userMatching(userArray, username)
+                        console.log(loggedInUser)
+                        userProtocol(loggedInUser)
+                    })
+                }
+            )
         }
         if (e.target.matches("#delete")){
             let userID = e.target.dataset.id
             User.deleteUser(userID)
             // statusBar.innerText = ''
             libraryTag.innerText = ''
-            libraryItems.innerHTML = ''
+            // libraryItems.innerHTML = ''
             User.deleteCookie()
-            userLogin("block")
+            // userLogin("block")
         }
         if (e.target.matches("#log-out")){
             let signBtn = document.querySelector("#delete")
+            form = document.querySelector("#username")
+            form.value = ""
             statusBar.innerText = ""
             signBtn.innerText = "Sign-up"
             signBtn.id = "sign_up"
             e.target.innerText = "Log-in"
-            e.target.id = "login_btn"
             libraryTag.innerText = ''
             // libraryItems.innerHTML = ''
             User.deleteCookie
-            userLogin("block")
+            // userLogin("block")
+            e.target.id = "login_btn"
         }
         if(e.target.matches("#login_btn")){
             let username  = document.querySelector('#username').value
@@ -111,10 +123,16 @@ document.addEventListener("DOMContentLoaded", e=>{
             createAddBtn()
             createSliderHTML()
             User.loginUser()
+            
             .then(userArray =>{
                 let loggedInUser = User.userMatching(userArray, username, 1)
                 Checkout.renderMyLibrary(loggedInUser)
                 eventHandler()
+                infoRender()
+                            if (document.querySelector(".liked")){
+                                let likeBtn = document.querySelector(".liked")
+                                likeBtn.remove()
+                            }
 
             })
         }
@@ -141,13 +159,13 @@ document.addEventListener("DOMContentLoaded", e=>{
         if (e.target.matches("#delete_book")){
             let username = document.querySelector("#library_render").dataset.name
             let activeImg = document.querySelector(".active")
-            let checkoutID = activeImg.id
+            let checkoutID = activeImg.dataset.checkout
             Checkout.deleteBook(checkoutID)
             .then(blah => {
                 activeImg.remove()
             })
             User.loginUser()
-            .thesubmitn(userArray =>{
+            .then(userArray =>{
 
                 let loggedInUser = User.userMatching(userArray, username, 1)
                 Checkout.renderMyLibrary(loggedInUser)
@@ -161,12 +179,13 @@ document.addEventListener("DOMContentLoaded", e=>{
 
     document.addEventListener("click", e=>{
             if (e.target.name === "Submit"){
-            debugger
+            // debugger
             let form = document.querySelector("#search-form")
             let sliderContainer = document.querySelector(".carousel_wrapper")
             let searchWords = form['search-q'].value
             let searchBy = form['search-method'].value
             sliderContainer.innerHTML = ""
+            createAddBtn()
             createSliderHTML()
             FetchAdapter.fetch()
                 .then(bookCollection => {
@@ -174,16 +193,17 @@ document.addEventListener("DOMContentLoaded", e=>{
                     let filteredBooks = Book.searchFilter(books, searchWords, searchBy)
                     Book.renderBooks(filteredBooks, sliderContainer)
                     eventHandler()
+                    infoRender()
                 })
             // form.reset()
         }
     })
     
-    const userLogin = (displayType) => {
-        debugger
-        let usernameForm = document.querySelector('#username')
-        usernameForm.style.display = displayType
-    }
+    // const userLogin = (displayType) => {
+    //     debugger
+    //     let usernameForm = document.querySelector('#username')
+    //     usernameForm.style.display = displayType
+    // }
     
     let statusBar  = document.querySelector('#logged-in')
     let libraryTag  = document.querySelector('#cookie-name')
@@ -200,7 +220,7 @@ document.addEventListener("DOMContentLoaded", e=>{
         cookies = User.setCookie(user.username)
         // libraryTag.innerText = `${cookies}'s Library`
         libraryTag.dataset.id = user.id
-        statusBar.innerHTML = `Logged in as ${cookies}<br>`
+        // statusBar.innerHTML = `Logged in as ${cookies}<br>`
         container.append(libraryBtn)
         container.appendChild(statusBar)
         

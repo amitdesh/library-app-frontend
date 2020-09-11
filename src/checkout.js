@@ -37,19 +37,35 @@ class Checkout {
     static renderMyLibrary = (user) => {
         let myLib = document.querySelector(".carousel_wrapper")
         let libBooks = user.books
+        let books = libBooks.map(bookObj => new Book(bookObj))
+        Book.renderBooks(books, myLib)
+        let bookImg = document.querySelectorAll(".carousel__photo")
         let libCheckouts = user.checkouts
+
+        for (let i = 0; i < libCheckouts.length; i++) {
+            let checkout = libCheckouts[i];
+            for (let i = 0; i < bookImg.length; i++) {
+                let book = bookImg[i];
+                // debugger
+                if(checkout.book_id === parseInt(book.id)){
+                    book.dataset.checkout = checkout.id
+                }
+            }
+          }
         let deleteBtn = document.createElement("button")
+        debugger
         deleteBtn.id = "delete_book"
         deleteBtn.innerText = "Delete"
         myLib.append(deleteBtn)
-        for (let i = 0; i< libBooks.length; i++){
-            const bookEntry = document.createElement('input')
-            bookEntry.type = "image"
-            bookEntry.classList.add("carousel__photo")
-            bookEntry.src = libBooks[i]['image']
-            bookEntry.id = libCheckouts[i]['id']
-            myLib.appendChild(bookEntry)
-        }
+
+    //     for (let i = 0; i< libBooks.length; i++){
+    //         const bookEntry = document.createElement('input')
+    //         bookEntry.type = "image"
+    //         bookEntry.classList.add("carousel__photo")
+    //         bookEntry.src = libBooks[i]['image']
+    //         bookEntry.id = libCheckouts[i]['id']
+    //         myLib.appendChild(bookEntry)
+    //     }
     }
 
     static deleteBook = (id) => {

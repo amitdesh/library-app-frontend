@@ -11,7 +11,15 @@ class Book{
     }
 
     static renderBooks(filteredBookArray, bookList){
+        let divContainer = document.querySelector(".carousel_wrapper")
+        if (!document.querySelector("#book-info")){
+            let bookInfoDiv = document.querySelector("#book_box")
+            // bookInfoDiv.id = "book-info"
+            divContainer.append(bookInfoDiv)
+        }
+        // debugger
         for(const book of filteredBookArray){
+            // debugger
             book.render(bookList)
         }
     }
@@ -53,10 +61,21 @@ class Book{
         let bookImg = document.createElement("INPUT");
         bookImg.setAttribute("type", "image");
         bookImg.classList.add("carousel__photo")
+        let divContainer = document.querySelector("#div4")
+        // if (document.querySelector("#book-info")){}
+        // else{
+        //     let bookInfoDiv = document.createElement("div")
+        //     bookInfoDiv.id = "book-info"
+        // }
+        // let bookInfoDiv = document.querySelector("#book-info")
+        bookImg.height="800"
         bookImg.dataset.title = `${this.title}`
         bookImg.dataset.author = `${this.author}`
+        bookImg.dataset.genre = `${this.genre}`
+        bookImg.dataset.popularity = `${this.popularity}`
         bookImg.id = `${this.id}`
         bookImg.src = `${this.image}`
         bookList.appendChild(bookImg)
+        // divContainer.append(bookInfoDiv)
     }
 }

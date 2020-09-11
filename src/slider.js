@@ -1,3 +1,21 @@
+function infoRender(){
+  if (document.querySelector("#book_box")){
+    x = document.querySelector("#book_box")
+    x.remove()
+  }
+  bookContainer = document.createElement("div")
+  container = document.querySelector(".carousel_wrapper")
+  bookContainer.id = "book_box"
+  bookInfo = document.querySelector(".active")
+  bookContainer.innerHTML =`
+  <h3>Author: ${bookInfo.dataset.author}</h3>
+  <h3>Title: ${bookInfo.dataset.title}</h3>
+  <h3>Genre: ${bookInfo.dataset.genre}</h3>
+  <h3>Rating: ${bookInfo.dataset.popularity}</h3>
+  `
+  container.appendChild(bookContainer)
+  
+}
 function createSliderHTML(){
   let carousel = document.querySelector(".carousel_wrapper")
   if (carousel.querySelector(".carousel__photo--next")){}
@@ -32,7 +50,10 @@ var next = d.getElementsByClassName('carousel__button--next')[0],
     prev = d.getElementsByClassName('carousel__button--prev')[0];
 next.addEventListener('click', moveNext);
 prev.addEventListener('click', movePrev);
+prev.addEventListener('click', infoRender)
+next.addEventListener('click', infoRender);
 }
+
 
 // Next navigation handler
 function moveNext() {
@@ -116,11 +137,12 @@ if(!moving) {
 }
 }
 
+
 function initCarousel() {
-setInitialClasses();
-setEventListeners();
-// Set moving to false so that the carousel becomes interactive
-moving = false;
+  setInitialClasses();
+  setEventListeners();
+  // Set moving to false so that the carousel becomes interactive
+  moving = false;
 }
 
 // make it rain

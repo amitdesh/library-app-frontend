@@ -8,6 +8,21 @@
     box-sizing: border-box;
   }
 
+  #book_box{
+    border-radius: 25px;
+    margin: 10px;
+    background: white;
+    position: absolute;
+    left: 70%;
+    top: 130%;
+    width: auto;
+    height: auto;
+  }
+
+  #book_box h3{
+    margin: 10px
+  }
+
   .carousel {
     transform-style: preserve-3d;
   }
@@ -50,7 +65,7 @@
 .carousel__button--prev,
 .carousel__button--next {
   position: absolute;
-  top:120%;
+  top:140%;
   width: 3rem;
   height: 3rem;
   background-color: #FFF;
