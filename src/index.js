@@ -97,6 +97,8 @@ document.addEventListener("DOMContentLoaded", e=>{
             signBtn.id = "sign_up"
             e.target.innerText = "Log-in"
             libraryTag.innerText = ''
+            let hideCarousel = document.querySelector(".carousel_wrapper")
+            hideCarousel.innerHTML = ""
             // libraryItems.innerHTML = ''
             User.deleteCookie
             // userLogin("block")
@@ -191,6 +193,7 @@ document.addEventListener("DOMContentLoaded", e=>{
                 .then(bookCollection => {
                     let books = bookCollection.map(bookObj => new Book(bookObj))
                     let filteredBooks = Book.searchFilter(books, searchWords, searchBy)
+                    console.log(filteredBooks)
                     Book.renderBooks(filteredBooks, sliderContainer)
                     eventHandler()
                     infoRender()
@@ -211,7 +214,6 @@ document.addEventListener("DOMContentLoaded", e=>{
     let bookShowPage  = document.querySelector('#book-info')
 
     const userProtocol = (user) => {
-        debugger
         let container = document.querySelector("#div4")
         let libraryBtn = document.createElement("button")
         libraryBtn.id = "library_render"

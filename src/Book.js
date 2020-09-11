@@ -38,7 +38,7 @@ class Book{
     static searchFilter(bookArray, searchWords, searchBy){
         let filteredBookArray = []
         for (let i =0; i< bookArray.length; i++){
-            if (bookArray[i][searchBy].includes(searchWords)){
+            if (bookArray[i][`${searchBy}`]=== `${searchWords}`){
                 filteredBookArray.push(bookArray[i])
             }
         }

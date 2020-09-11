@@ -53,7 +53,6 @@ class Checkout {
             }
           }
         let deleteBtn = document.createElement("button")
-        debugger
         deleteBtn.id = "delete_book"
         deleteBtn.innerText = "Delete"
         myLib.append(deleteBtn)
