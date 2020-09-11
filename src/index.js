@@ -101,6 +101,8 @@ document.addEventListener("DOMContentLoaded", e=>{
             hideCarousel.innerHTML = ""
             // libraryItems.innerHTML = ''
             User.deleteCookie
+            let removeLikeBtn = document.querySelector(".liked")
+            removeLikeBtn.remove()
             // userLogin("block")
             e.target.id = "login_btn"
         }
